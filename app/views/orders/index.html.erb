@@ -14,7 +14,7 @@
       <div class="order-line"><%= order.user_id %></div>
       <div class="order-line"><%= link_to 'Show', order %></div>
       <div class="order-line"><%= link_to 'Edit', edit_order_path(order) %></div>
-      <% if current_user.role.name == 'delivery' %>
+      <% if current_user.is_delivery_man? %>
         <div class="order-line"><%= link_to 'Direction', direction_path(order) %></div>
       <% end %>
     </article>
