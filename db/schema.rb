@@ -13,17 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150227140444) do
 
-  create_table "products", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.float    "price"
-    t.string   "image_link"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-ActiveRecord::Schema.define(version: 20150227133702) do
-
   create_table "orders", force: :cascade do |t|
     t.decimal  "total_price"
     t.boolean  "is_payed"
@@ -33,6 +22,15 @@ ActiveRecord::Schema.define(version: 20150227133702) do
     t.string   "street"
     t.integer  "number"
     t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.float    "price"
+    t.string   "image_link"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
