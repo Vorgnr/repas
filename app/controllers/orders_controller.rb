@@ -1,17 +1,21 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy, :direction]
   before_action :authenticate_user!
-  before_action :delivery_only, only: [:direction]
+  before_action :is_delivery, only: [:direction]
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.where(user_id: current_user.id)
+    if current_user.is_delivery_man?
+      @orders = Order.all
+    else
+      @orders = Order.where(user_id: current_user.id)
+    end
   end
 
   # GET /orders/1/direction
   def direction
-    @destination = "#{@order[:zip_code]} #{@order[:city]} #{@order[:number]} #{@order[:street]}"
+    @destination = @order.address
   end
 
   # GET /orders/1
@@ -81,8 +85,8 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:date, :zip_code, :city, :street, :number)
     end
 
-    def delivery_only
-      unless current_user.role.name == 'delivery'
+    def is_delivery
+      unless current_user.is_delivery_man?
         redirect_to :back, :alert => "Access denied."
       end
     end
