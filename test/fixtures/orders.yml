@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_price: 9.99
+  is_payed: false
+  date: 2015-02-27 14:37:02
+  zip_code: 1
+  city: MyString
+  street: MyString
+  number: 1
+  user_id: 1
+
+two:
+  total_price: 9.99
+  is_payed: false
+  date: 2015-02-27 14:37:02
+  zip_code: 1
+  city: MyString
+  street: MyString
+  number: 1
+  user_id: 1
