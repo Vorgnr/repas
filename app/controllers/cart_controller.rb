@@ -1,28 +1,17 @@
 class CartController < ApplicationController
-    before_action :authenticate_user!
+  before_action :authenticate_user!, :set_product_and_cart
 
-    def add
-        id = params[:id]
-        session[:cart] ||= {}
-        session[:cart][:products] ||= {}
-        session[:cart][:products][id] ||= 0
-        session[:cart][:products][id] += 1
+  def add
+    @cart.add(@product, @product)
+  end
 
-        respond_to do |format|
-            format.json { render json: session[:cart].build_json }
-        end
-    end
+  def remove
+    @cart.remove(@product, 1)
+  end
 
-    def remove
-        id = params[:id]
-        session[:cart] ||= {}
-        session[:cart][:products] ||= {}
-        if(session[:cart][:products][id])
-            session[:cart][:products][id] -= 1
-        end
-
-        respond_to do |format|
-            format.json { render json: session[:cart].build_json }
-        end
+  private
+    def set_product_and_cart
+      @cart = session[:cart] ? Cart.find(session[:cart]) : Cart.create
+      @product = Product.find(params[:id])
     end
 end
