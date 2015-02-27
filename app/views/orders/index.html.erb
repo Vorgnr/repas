@@ -1,40 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Orders</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Total price</th>
-      <th>Is payed</th>
-      <th>Date</th>
-      <th>Zip code</th>
-      <th>City</th>
-      <th>Street</th>
-      <th>Number</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.total_price %></td>
-        <td><%= order.is_payed %></td>
-        <td><%= order.date %></td>
-        <td><%= order.zip_code %></td>
-        <td><%= order.city %></td>
-        <td><%= order.street %></td>
-        <td><%= order.number %></td>
-        <td><%= order.user_id %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<section>
+  <% @orders.each do |order| %>
+    <article class="order">
+      <div class="order-line"><%= order.total_price %></div>
+      <div class="order-line"><%= order.is_payed %></div>
+      <div class="order-line"><%= order.date %></div>
+      <div class="order-line"><%= order.zip_code %></div>
+      <div class="order-line"><%= order.city %></div>
+      <div class="order-line"><%= order.street %></div>
+      <div class="order-line"><%= order.number %></div>
+      <div class="order-line"><%= order.user_id %></div>
+      <div class="order-line"><%= link_to 'Show', order %></div>
+      <div class="order-line"><%= link_to 'Edit', edit_order_path(order) %></div>
+      <% if current_user.role.name == 'delivery' %>
+        <div class="order-line"><%= link_to 'Direction', direction_path(order) %></div>
+      <% end %>
+    </article>
+  <% end %>
+</section>
 
 <br>
 

@@ -6,6 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+['customer', 'delivery_man'].each do |role|
+  Role.find_or_create_by({name: role})
+end
+[
+  {:email => 'customer@gmail.com', :password => 'password', :password_confirmation => 'password', :role_id => 1},
+  {:email => 'delivery@gmail.com', :password => 'password', :password_confirmation => 'password', :role_id => 2}
+].each do |user|
+  User.create(user)
+end
+
 15.times do |i|
   Product.create(
     name: "Product ##{i}", 

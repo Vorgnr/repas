@@ -1,11 +1,17 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :direction]
   before_action :authenticate_user!
+  before_action :delivery_only, only: [:direction]
 
   # GET /orders
   # GET /orders.json
   def index
     @orders = Order.where(user_id: current_user.id)
+  end
+
+  # GET /orders/1/direction
+  def direction
+    @destination = "#{@order[:zip_code]} #{@order[:city]} #{@order[:number]} #{@order[:street]}"
   end
 
   # GET /orders/1
@@ -43,7 +49,6 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     order_params[:user_id] = current_user.id
-    puts order_params
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
@@ -74,5 +79,11 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:date, :zip_code, :city, :street, :number)
+    end
+
+    def delivery_only
+      unless current_user.role.name == 'delivery'
+        redirect_to :back, :alert => "Access denied."
+      end
     end
 end
