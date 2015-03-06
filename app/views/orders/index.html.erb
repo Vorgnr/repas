@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Orders</h1>
+<section>
+  <% @orders.each do |order| %>
+    <article class="order">
+      <div class="order-line"><%= order.total_price %></div>
+      <div class="order-line"><%= order.is_payed %></div>
+      <div class="order-line"><%= order.date %></div>
+      <div class="order-line"><%= order.zip_code %></div>
+      <div class="order-line"><%= order.city %></div>
+      <div class="order-line"><%= order.street %></div>
+      <div class="order-line"><%= order.number %></div>
+      <div class="order-line"><%= order.user_id %></div>
+      <div class="order-line"><%= link_to 'Show', order %></div>
+      <div class="order-line"><%= link_to 'Edit', edit_order_path(order) %></div>
+      <% if current_user.is_delivery_man? %>
+        <div class="order-line"><%= link_to 'Direction', direction_path(order) %></div>
+      <% end %>
+    </article>
+  <% end %>
+</section>
+<% if current_user.is_delivery_man? %>
+  <%= link_to 'Direction', alldirection_path, class: "btn btn-primary" %>
+<% end %>
+<br>
+
+<%= link_to 'New Order', new_order_path %>
