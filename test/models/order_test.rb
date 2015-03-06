@@ -24,9 +24,4 @@ class OrderTest < ActiveSupport::TestCase
     @order.number = nil
     assert @order.save
   end
-
-  test 'should not save order with 0 number' do
-    @order.number = 0
-    assert_not @order.save
-  end
 end
