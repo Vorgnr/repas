@@ -20,7 +20,9 @@
     </article>
   <% end %>
 </section>
-
+<% if current_user.is_delivery_man? %>
+  <%= link_to 'Direction', alldirection_path, class: "btn btn-primary" %>
+<% end %>
 <br>
 
 <%= link_to 'New Order', new_order_path %>

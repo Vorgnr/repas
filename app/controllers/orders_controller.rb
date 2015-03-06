@@ -18,6 +18,10 @@ class OrdersController < ApplicationController
     @destination = @order.address
   end
 
+  def alldirection
+    @destinations = Order.all.map { |order| {location: order.address} }
+  end
+
   # GET /orders/1
   # GET /orders/1.json
   def show
