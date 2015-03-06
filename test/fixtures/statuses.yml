@@ -1,13 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   id: 1
-  label: 'is_paid'
+  label: 'is_new'
 
 two:
   id: 2
-  label: 'is_delivered'
+  label: 'is_paid'
 
 three:
   id: 3
+  label: 'is_delivered'
+
+four:
+  id: 4
   label: 'is_cashed'

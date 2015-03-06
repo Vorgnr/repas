@@ -20,7 +20,7 @@ two:
   street: Avenue de Rangeuil
   number: 2
   user_id: 3
-  status_id: 1
+  status_id: 2
 
 three:
   id: 3
@@ -31,4 +31,4 @@ three:
   street: Avenue de Rangeuil
   number: 2
   user_id: 3
-  status_id: 2
+  status_id: 3
