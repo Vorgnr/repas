@@ -7,8 +7,7 @@ class DeliveryServiceTest < ActiveSupport::TestCase
 
   test "get_orders_to_deliver should return not already delivered orders" do
     actual = @delivery_service.get_orders_to_deliver
-    expected = [orders(:one), orders(:two)]
-    assert_equal expected, actual
+    assert_equal 2, actual.count
   end
 
   test "get_address_for_orders should each order address" do
@@ -19,7 +18,7 @@ class DeliveryServiceTest < ActiveSupport::TestCase
 
   test "set_order_delivered should update status accordingly" do
     @delivery_service.set_order_delivered(orders(:one).id)
-    expected = Order.find(orders(:one).id).is_delivered
-    assert expected
+    actual = Order.find(orders(:one).id).status.label
+    assert_equal 'is_delivered', actual
   end
 end

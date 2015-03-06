@@ -5,7 +5,7 @@
   <% @orders.each do |order| %>
     <article class="order">
       <div class="order-line"><%= order.total_price %></div>
-      <div class="order-line"><%= order.is_payed %></div>
+      <div class="order-line"><%= order.status_id %></div>
       <div class="order-line"><%= order.date %></div>
       <div class="order-line"><%= order.zip_code %></div>
       <div class="order-line"><%= order.city %></div>

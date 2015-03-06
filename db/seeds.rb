@@ -23,3 +23,7 @@ end
     price: 10.0,
     image_link: "https://s3-ap-southeast-1.amazonaws.com/s3fileslive/public/gallery/40825_food_pizza_1477172.jpeg")
 end
+
+['is_paid', 'is_delivered', 'is_cashed'].each do |status|
+  Status.find_or_create_by({label: status})
+end
