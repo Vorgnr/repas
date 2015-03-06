@@ -33,6 +33,7 @@ gem 'autoprefixer-rails'
 gem 'underscore-rails'
 
 gem 'gmaps4rails'
+gem 'simplecov', :require => false, :group => :test
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
