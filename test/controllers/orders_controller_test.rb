@@ -57,7 +57,7 @@ class OrdersControllerTest < ActionController::TestCase
   test "should get all orders on index if role delivery" do
     sign_in users(:delivery_man)
     get :index
-    assert_equal 2, assigns(:orders).length
+    assert_equal Order.count, assigns(:orders).length
   end
 
   test "should be redirect get delivery if no delivery_man role" do
