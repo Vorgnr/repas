@@ -1,6 +1,6 @@
 class DeliveryService
   def get_orders_to_deliver
-    order_model.includes(:status).where(statuses: {label: %w(is_new is_paid) })
+    order_model.where({status_id: %w(1 2)})
   end
 
   def get_address_for_orders(orders_id)

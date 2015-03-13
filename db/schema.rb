@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 20150306154118) do
     t.string   "street"
     t.integer  "number"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "additional"
-    t.integer  "status_id"
+    t.integer  "status_id",   default: 1
   end
 
   create_table "products", force: :cascade do |t|
