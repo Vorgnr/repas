@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :products
-
+  wash_out :delivery
+  wash_out :order
   root "welcome#index"
   resources :orders
   get '/alldirection', to: 'orders#alldirection', as: 'alldirection'

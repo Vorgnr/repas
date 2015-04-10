@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-['customer', 'delivery_man'].each do |role|
+%w(customer delivery_man).each do |role|
   Role.find_or_create_by({name: role})
 end
 [
@@ -19,7 +19,12 @@ end
 15.times do |i|
   Product.create(
     name: "Product ##{i}", 
-    description: "A product.",
+    description: 'A product.',
     price: 10.0,
-    image_link: "https://s3-ap-southeast-1.amazonaws.com/s3fileslive/public/gallery/40825_food_pizza_1477172.jpeg")
+    image_link: 'https://s3-ap-southeast-1.amazonaws.com/s3fileslive/public/gallery/40825_food_pizza_1477172.jpeg'
+  )
+end
+
+%w(is_new is_paid is_delivered is_cashed).each do |status|
+  Status.find_or_create_by({label: status})
 end

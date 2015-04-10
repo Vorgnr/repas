@@ -20,7 +20,7 @@ class OrdersControllerTest < ActionController::TestCase
 
   test "should create order" do
     assert_difference('Order.count') do
-      post :create, order: { city: @order.city, date: @order.date, is_payed: @order.is_payed, number: @order.number, street: @order.street, total_price: @order.total_price, user_id: @order.user_id, zip_code: @order.zip_code }
+      post :create, order: { city: @order.city, date: @order.date, is_payed: @order.status_id, number: @order.number, street: @order.street, total_price: @order.total_price, user_id: @order.user_id, zip_code: @order.zip_code }
     end
 
     assert_redirected_to order_path(assigns(:order))
@@ -37,7 +37,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should update order" do
-    patch :update, id: @order, order: { city: @order.city, date: @order.date, is_payed: @order.is_payed, number: @order.number, street: @order.street, total_price: @order.total_price, user_id: @order.user_id, zip_code: @order.zip_code }
+    patch :update, id: @order, order: { city: @order.city, date: @order.date, is_payed: @order.status_id, number: @order.number, street: @order.street, total_price: @order.total_price, user_id: @order.user_id, zip_code: @order.zip_code }
     assert_redirected_to order_path(assigns(:order))
   end
 
@@ -57,7 +57,7 @@ class OrdersControllerTest < ActionController::TestCase
   test "should get all orders on index if role delivery" do
     sign_in users(:delivery_man)
     get :index
-    assert_equal 2, assigns(:orders).length
+    assert_equal Order.count, assigns(:orders).length
   end
 
   test "should be redirect get delivery if no delivery_man role" do

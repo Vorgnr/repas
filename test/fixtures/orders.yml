@@ -3,21 +3,32 @@
 one:
   id: 1
   total_price: 9.99
-  is_payed: false
   date: 2015-02-27 14:37:02
   zip_code: 31400
   city: Toulouse
   street: rue des cèdres
   number: 11
   user_id: 1
+  status_id: 1
 
 two:
   id: 2
   total_price: 9.99
-  is_payed: false
   date: 2015-02-27 14:37:02
   zip_code: 31000
   city: Toulouse
   street: Avenue de Rangeuil
   number: 2
   user_id: 3
+  status_id: 2
+
+three:
+  id: 3
+  total_price: 9.99
+  date: 2015-02-27 14:37:02
+  zip_code: 31000
+  city: Caraman
+  street: Avenue de Rangeuil
+  number: 2
+  user_id: 3
+  status_id: 3

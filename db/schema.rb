@@ -11,19 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227145501) do
+ActiveRecord::Schema.define(version: 20150306154118) do
 
   create_table "orders", force: :cascade do |t|
     t.decimal  "total_price"
-    t.boolean  "is_payed"
     t.datetime "date"
     t.integer  "zip_code"
     t.string   "city"
     t.string   "street"
     t.integer  "number"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "additional"
+    t.integer  "status_id",   default: 1
   end
 
   create_table "products", force: :cascade do |t|
@@ -37,6 +38,12 @@ ActiveRecord::Schema.define(version: 20150227145501) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string   "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
